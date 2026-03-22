@@ -1,0 +1,341 @@
+[gd_scene load_steps=2 format=3 uid="uid://b3uc01lce372c"]
+
+[ext_resource type="Script" uid="uid://wlwsavvoe8rv" path="res://scripts/Main.gd" id="1_main"]
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_main")
+
+[node name="RootMargin" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 18
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 18
+
+[node name="MainVBox" type="VBoxContainer" parent="RootMargin"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="TopBar" type="HBoxContainer" parent="RootMargin/MainVBox"]
+custom_minimum_size = Vector2(0, 52)
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="GameNameLabel" type="Label" parent="RootMargin/MainVBox/TopBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 28
+text = "Where"
+
+[node name="VersionLabel" type="Label" parent="RootMargin/MainVBox/TopBar"]
+layout_mode = 2
+text = "v0.1.0"
+
+[node name="RestartButton" type="Button" parent="RootMargin/MainVBox/TopBar"]
+layout_mode = 2
+text = "游戏重新开始"
+
+[node name="HelpButton" type="Button" parent="RootMargin/MainVBox/TopBar"]
+layout_mode = 2
+text = "游戏说明"
+
+[node name="CenterPanel" type="HBoxContainer" parent="RootMargin/MainVBox"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 16
+
+[node name="MapPanel" type="PanelContainer" parent="RootMargin/MainVBox/CenterPanel"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="MapMargin" type="MarginContainer" parent="RootMargin/MainVBox/CenterPanel/MapPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="MapGrid" type="GridContainer" parent="RootMargin/MainVBox/CenterPanel/MapPanel/MapMargin"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+columns = 8
+
+[node name="ActorViewportContainer" type="SubViewportContainer" parent="RootMargin/MainVBox/CenterPanel/MapPanel/MapMargin"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+mouse_filter = 2
+
+[node name="ActorSubViewport" type="SubViewport" parent="RootMargin/MainVBox/CenterPanel/MapPanel/MapMargin/ActorViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+size = Vector2i(2, 2)
+render_target_update_mode = 4
+
+[node name="ActorsRoot" type="Node2D" parent="RootMargin/MainVBox/CenterPanel/MapPanel/MapMargin/ActorViewportContainer/ActorSubViewport"]
+
+[node name="FxLayer" type="Control" parent="RootMargin/MainVBox/CenterPanel/MapPanel/MapMargin"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+mouse_filter = 2
+
+[node name="NightOverlay" type="ColorRect" parent="RootMargin/MainVBox/CenterPanel/MapPanel/MapMargin"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+mouse_filter = 2
+color = Color(0.03, 0.04, 0.08, 0)
+
+[node name="InfoPanel" type="PanelContainer" parent="RootMargin/MainVBox/CenterPanel"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="InfoMargin" type="MarginContainer" parent="RootMargin/MainVBox/CenterPanel/InfoPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="InfoVBox" type="VBoxContainer" parent="RootMargin/MainVBox/CenterPanel/InfoPanel/InfoMargin"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="InfoSidebarTitle" type="Label" parent="RootMargin/MainVBox/CenterPanel/InfoPanel/InfoMargin/InfoVBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "本局信息"
+horizontal_alignment = 1
+
+[node name="TurnCard" type="PanelContainer" parent="RootMargin/MainVBox/CenterPanel/InfoPanel/InfoMargin/InfoVBox"]
+layout_mode = 2
+
+[node name="TurnMargin" type="MarginContainer" parent="RootMargin/MainVBox/CenterPanel/InfoPanel/InfoMargin/InfoVBox/TurnCard"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="TurnVBox" type="VBoxContainer" parent="RootMargin/MainVBox/CenterPanel/InfoPanel/InfoMargin/InfoVBox/TurnCard/TurnMargin"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="StatusLabel" type="Label" parent="RootMargin/MainVBox/CenterPanel/InfoPanel/InfoMargin/InfoVBox/TurnCard/TurnMargin/TurnVBox"]
+layout_mode = 2
+text = "状态"
+autowrap_mode = 2
+
+[node name="EndDayButton" type="Button" parent="RootMargin/MainVBox/CenterPanel/InfoPanel/InfoMargin/InfoVBox/TurnCard/TurnMargin/TurnVBox"]
+layout_mode = 2
+text = "结束白天，进入夜晚"
+
+[node name="EnemyCard" type="PanelContainer" parent="RootMargin/MainVBox/CenterPanel/InfoPanel/InfoMargin/InfoVBox"]
+layout_mode = 2
+
+[node name="EnemyMargin" type="MarginContainer" parent="RootMargin/MainVBox/CenterPanel/InfoPanel/InfoMargin/InfoVBox/EnemyCard"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="EnemyVBox" type="VBoxContainer" parent="RootMargin/MainVBox/CenterPanel/InfoPanel/InfoMargin/InfoVBox/EnemyCard/EnemyMargin"]
+layout_mode = 2
+
+[node name="ObjectiveLabel" type="Label" parent="RootMargin/MainVBox/CenterPanel/InfoPanel/InfoMargin/InfoVBox/EnemyCard/EnemyMargin/EnemyVBox"]
+layout_mode = 2
+text = "目标"
+autowrap_mode = 2
+
+[node name="EnemyAvatarRow" type="HBoxContainer" parent="RootMargin/MainVBox/CenterPanel/InfoPanel/InfoMargin/InfoVBox/EnemyCard/EnemyMargin/EnemyVBox"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="AllyCard" type="PanelContainer" parent="RootMargin/MainVBox/CenterPanel/InfoPanel/InfoMargin/InfoVBox"]
+layout_mode = 2
+
+[node name="AllyMargin" type="MarginContainer" parent="RootMargin/MainVBox/CenterPanel/InfoPanel/InfoMargin/InfoVBox/AllyCard"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="AllyVBox" type="VBoxContainer" parent="RootMargin/MainVBox/CenterPanel/InfoPanel/InfoMargin/InfoVBox/AllyCard/AllyMargin"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="ShopHeader" type="HBoxContainer" parent="RootMargin/MainVBox/CenterPanel/InfoPanel/InfoMargin/InfoVBox/AllyCard/AllyMargin/AllyVBox"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="ShopTitleLabel" type="Label" parent="RootMargin/MainVBox/CenterPanel/InfoPanel/InfoMargin/InfoVBox/AllyCard/AllyMargin/AllyVBox/ShopHeader"]
+layout_mode = 2
+text = "商店"
+
+[node name="ShopGoldLabel" type="Label" parent="RootMargin/MainVBox/CenterPanel/InfoPanel/InfoMargin/InfoVBox/AllyCard/AllyMargin/AllyVBox/ShopHeader"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "💴 10"
+horizontal_alignment = 2
+
+[node name="ShopVolunteerButton" type="Button" parent="RootMargin/MainVBox/CenterPanel/InfoPanel/InfoMargin/InfoVBox/AllyCard/AllyMargin/AllyVBox"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+
+[node name="ShopVolunteerDot" type="Panel" parent="RootMargin/MainVBox/CenterPanel/InfoPanel/InfoMargin/InfoVBox/AllyCard/AllyMargin/AllyVBox/ShopVolunteerButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -34.0
+offset_top = -34.0
+offset_right = 34.0
+offset_bottom = 34.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ShopPriceBg" type="Panel" parent="RootMargin/MainVBox/CenterPanel/InfoPanel/InfoMargin/InfoVBox/AllyCard/AllyMargin/AllyVBox/ShopVolunteerButton"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -34.0
+offset_top = -30.0
+offset_right = -2.0
+offset_bottom = -2.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="ShopPriceBadge" type="Label" parent="RootMargin/MainVBox/CenterPanel/InfoPanel/InfoMargin/InfoVBox/AllyCard/AllyMargin/AllyVBox/ShopVolunteerButton"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -28.0
+offset_right = -4.0
+offset_bottom = -4.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.05, 0.05, 0.08, 1)
+theme_override_font_sizes/font_size = 13
+text = "5"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MoveLabel" type="Label" parent="RootMargin/MainVBox/CenterPanel/InfoPanel/InfoMargin/InfoVBox/AllyCard/AllyMargin/AllyVBox"]
+layout_mode = 2
+text = "移动（探索模式）"
+
+[node name="MoveGrid" type="GridContainer" parent="RootMargin/MainVBox/CenterPanel/InfoPanel/InfoMargin/InfoVBox/AllyCard/AllyMargin/AllyVBox"]
+layout_mode = 2
+columns = 3
+
+[node name="MoveUpLeftButton" type="Button" parent="RootMargin/MainVBox/CenterPanel/InfoPanel/InfoMargin/InfoVBox/AllyCard/AllyMargin/AllyVBox/MoveGrid"]
+layout_mode = 2
+text = "↖"
+
+[node name="MoveUpButton" type="Button" parent="RootMargin/MainVBox/CenterPanel/InfoPanel/InfoMargin/InfoVBox/AllyCard/AllyMargin/AllyVBox/MoveGrid"]
+layout_mode = 2
+text = "↑"
+
+[node name="MoveUpRightButton" type="Button" parent="RootMargin/MainVBox/CenterPanel/InfoPanel/InfoMargin/InfoVBox/AllyCard/AllyMargin/AllyVBox/MoveGrid"]
+layout_mode = 2
+text = "↗"
+
+[node name="MoveLeftButton" type="Button" parent="RootMargin/MainVBox/CenterPanel/InfoPanel/InfoMargin/InfoVBox/AllyCard/AllyMargin/AllyVBox/MoveGrid"]
+layout_mode = 2
+text = "←"
+
+[node name="MoveCenterLabel" type="Label" parent="RootMargin/MainVBox/CenterPanel/InfoPanel/InfoMargin/InfoVBox/AllyCard/AllyMargin/AllyVBox/MoveGrid"]
+layout_mode = 2
+text = "◎"
+horizontal_alignment = 1
+
+[node name="MoveRightButton" type="Button" parent="RootMargin/MainVBox/CenterPanel/InfoPanel/InfoMargin/InfoVBox/AllyCard/AllyMargin/AllyVBox/MoveGrid"]
+layout_mode = 2
+text = "→"
+
+[node name="MoveDownLeftButton" type="Button" parent="RootMargin/MainVBox/CenterPanel/InfoPanel/InfoMargin/InfoVBox/AllyCard/AllyMargin/AllyVBox/MoveGrid"]
+layout_mode = 2
+text = "↙"
+
+[node name="MoveDownButton" type="Button" parent="RootMargin/MainVBox/CenterPanel/InfoPanel/InfoMargin/InfoVBox/AllyCard/AllyMargin/AllyVBox/MoveGrid"]
+layout_mode = 2
+text = "↓"
+
+[node name="MoveDownRightButton" type="Button" parent="RootMargin/MainVBox/CenterPanel/InfoPanel/InfoMargin/InfoVBox/AllyCard/AllyMargin/AllyVBox/MoveGrid"]
+layout_mode = 2
+text = "↘"
+
+[node name="LogCard" type="PanelContainer" parent="RootMargin/MainVBox/CenterPanel/InfoPanel/InfoMargin/InfoVBox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="LogMargin" type="MarginContainer" parent="RootMargin/MainVBox/CenterPanel/InfoPanel/InfoMargin/InfoVBox/LogCard"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="LogVBox" type="VBoxContainer" parent="RootMargin/MainVBox/CenterPanel/InfoPanel/InfoMargin/InfoVBox/LogCard/LogMargin"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 6
+
+[node name="LogTitleLabel" type="Label" parent="RootMargin/MainVBox/CenterPanel/InfoPanel/InfoMargin/InfoVBox/LogCard/LogMargin/LogVBox"]
+layout_mode = 2
+text = "日志"
+
+[node name="EventLogLabel" type="RichTextLabel" parent="RootMargin/MainVBox/CenterPanel/InfoPanel/InfoMargin/InfoVBox/LogCard/LogMargin/LogVBox"]
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "欢迎来到 Where。"
+scroll_following = true
+
+[node name="HelpDialog" type="AcceptDialog" parent="."]
+title = "Where - 游戏说明"
+size = Vector2i(640, 360)
+
+[node name="PhaseBanner" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 88
+text = "白天"
+horizontal_alignment = 1
+vertical_alignment = 1

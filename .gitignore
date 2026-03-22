@@ -1,16 +1,39 @@
-# Godot 4+ specific ignores
+# Godot 4+
 .godot/
-.nomedia
-
-# Godot-specific ignores
 .import/
+
 export.cfg
 export_credentials.cfg
-
-# Imported translations (automatically generated from CSV files)
 *.translation
 
-# Mono-specific ignores
 .mono/
 data_*/
 mono_crash.*.json
+
+# 操作系统与编辑器杂项
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+*.log
+
+# 可选：导出目录
+exports/
+*.exe
+*.pck
+*.zip
+
+# Cursor 本地配置（不参与版本）
+.cursor/
+
+# 未接入主场景的大型素材目录（运行游戏仅需 assets/sprites/where/）
+character-pack-full_version/
+Sprout Lands - Sprites - Basic pack/
+GRASS/
+
+# 根目录参考图（可选）
+d5396c4d-bcbd-4266-99d4-e033cbac35b9.png
+d5396c4d-bcbd-4266-99d4-e033cbac35b9.png.import
+
+.nomedia
